@@ -15,13 +15,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome angular-project'
+      'Welcome dashboard-app'
     );
   });
 
-  it(`should have as title 'angular-project'`, () => {
+  it(`should have as title 'dashboard-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-project');
+    expect(app.title).toEqual('dashboard-app');
   });
 });
