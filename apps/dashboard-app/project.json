@@ -22,7 +22,10 @@
             "input": "apps/dashboard-app/public"
           }
         ],
-        "styles": ["apps/dashboard-app/src/styles.scss"],
+        "styles": [
+          "apps/dashboard-app/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.css"
+        ],
         "scripts": [],
         "server": "apps/dashboard-app/src/main.server.ts",
         "ssr": {
