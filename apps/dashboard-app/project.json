@@ -23,8 +23,8 @@
           }
         ],
         "styles": [
-          "apps/dashboard-app/src/styles.scss",
-          "node_modules/bootstrap/dist/css/bootstrap.css"
+          "node_modules/bootstrap/dist/css/bootstrap.css",
+          "apps/dashboard-app/src/styles.scss"
         ],
         "scripts": [],
         "server": "apps/dashboard-app/src/main.server.ts",

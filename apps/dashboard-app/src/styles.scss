@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+html {
+  font-family: 'Poppins', sans-serif;
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$orange-palette,
+        theme-type: light,
+      ),
+      typography: Poppins,
+      density: 0,
+    )
+  );
+}

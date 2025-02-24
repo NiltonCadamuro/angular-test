@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@angular-project/data-access": ["libs/core/data-access/src/index.ts"],
+      "@angular-project/material": ["libs/shared/material/src/index.ts"],
       "@angular-project/ui": ["libs/shared/ui/src/index.ts"]
     }
   },
