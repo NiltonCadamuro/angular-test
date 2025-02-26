@@ -1,0 +1,40 @@
+.menu-item,
+.menu-item_active {
+  .menu-item-link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+
+    .label {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: auto;
+      color: #737791;
+      margin: 0;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+  }
+}
+
+.menu-item {
+  background: transparent;
+  padding: 0 24px;
+  transition: all 0.3s ease;
+  margin: 0 0 48px;
+
+  &_active {
+    background: #5d5fef;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin: 0 0 48px;
+    transition: all 0.3s ease;
+
+    .menu-item-link {
+      .label {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.side-bar {
+  padding: 50px 46px 135px;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 0 0 49px;
+
+    .logo-title {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 150%;
+      color: #151d48;
+      margin: 0;
+    }
+  }
+
+  .dabang-pro {
+    width: 100%;
+    max-width: 238px;
+    background: url('/sidebar/background-dabang-pro.png') no-repeat center
+      center;
+    margin: 136px auto 0;
+    min-height: 261px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .dabang-pro-title {
+      margin: 8px 0 0;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 32px;
+      color: #fff;
+    }
+
+    .dabang-pro-description {
+      width: 100%;
+      max-width: 145px;
+      margin: 8px auto 30px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 18px;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+}

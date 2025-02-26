@@ -1,0 +1,15 @@
+.app-wrapper {
+  display: flex;
+
+  .lib-sidebar {
+    width: 100%;
+    max-width: 345px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    background: #ffffff;
+  }
+
+  .page-content {
+    width: 100%;
+  }
+}

@@ -1,0 +1,137 @@
+<header class="header">
+  <div class="header-container">
+    <div class="header-content">
+      <div class="header-left">
+        <h2 class="route-title">Dashboard</h2>
+      </div>
+
+      <div class="header-right">
+        <div class="search-bar">
+          <mat-form-field appearance="outline">
+            <mat-label class="d-flex align-items-center mat-label-search">
+              <img
+                src="/header/search-icon.svg"
+                alt=""
+                width="32"
+                height="32"
+              />
+              Search here...
+            </mat-label>
+            <input matInput placeholder="" />
+          </mat-form-field>
+        </div>
+
+        <div class="select-box-language">
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="selectedValue">
+              <mat-select-trigger>
+                <ng-container *ngIf="selectedValue === 'en-us'; else optionTwo">
+                  <img
+                    src="/header/language-flags/en-us.svg"
+                    alt="country flag"
+                    style="margin-right: 14px"
+                    width="24"
+                    height="24"
+                  />
+                  Eng (US)
+                </ng-container>
+                <ng-template #optionTwo
+                  ><img
+                    src="/header/language-flags/pt-br.svg"
+                    alt="country flag"
+                    style="margin-right: 14px"
+                    width="24"
+                    height="24"
+                  />Pt (BR)
+                </ng-template>
+              </mat-select-trigger>
+              <mat-option value="en-us"
+                ><img
+                  src="/header/language-flags/en-us.svg"
+                  alt="country flag"
+                />Eng (US)</mat-option
+              >
+              <mat-option value="pt-br"
+                ><img
+                  src="/header/language-flags/pt-br.svg"
+                  alt="country flag"
+                />Pt (BR)</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <ul class="profile-section">
+          <div class="badge-button-notification">
+            <button
+              mat-raised-button
+              matBadge="7"
+              [matBadgeHidden]="hidden"
+              (click)="toggleBadgeVisibility()"
+              class="btn btn-default"
+            >
+              Hide
+            </button>
+          </div>
+          <li class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+            >
+              <div class="profile-section" style="display: inline-block">
+                <div
+                  class="profile-image"
+                  style="display: inline-block; vertical-align: middle"
+                >
+                  <img
+                    src="path/to/profile.jpg"
+                    alt="Profile"
+                    width="60"
+                    height="60"
+                    class="img-circle"
+                  />
+                </div>
+                <div
+                  class="profile-info"
+                  style="
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                  "
+                >
+                  <span class="profile-name">Musfiq</span>
+                  <br />
+                  <span class="profile-role">Admin</span>
+                </div>
+                <div
+                  class="profile-action"
+                  style="
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 5px;
+                  "
+                >
+                  <img
+                    src="path/to/arrow.png"
+                    alt="arrow"
+                    width="16"
+                    height="16"
+                  />
+                </div>
+              </div>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

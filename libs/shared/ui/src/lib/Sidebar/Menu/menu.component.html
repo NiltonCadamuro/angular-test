@@ -1,0 +1,12 @@
+<div class="menu">
+  <ul class="menu-list">
+    @for(item of items; track item.label) {
+    <lib-menuitem
+      [icon]="item.icon"
+      [label]="item.label"
+      [link]="item.link"
+      [isActive]="item.link === currentRoute()"
+    ></lib-menuitem>
+    }
+  </ul>
+</div>

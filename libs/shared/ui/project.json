@@ -8,6 +8,13 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "options": {
+        "tsConfig": "libs/shared/ui/tsconfig.lib.json",
+        "project": "libs/shared/ui/ng-package.json",
+        "assets": ["apps/dashboard-app/public"]
+      }
     }
   }
 }

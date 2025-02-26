@@ -1,0 +1,12 @@
+<li [class]="isActive ? 'menu-item_active' : 'menu-item'">
+  <a [routerLink]="link" class="menu-item-link">
+    <img
+      [src]="isActive ? (icon | activeIcon) : icon"
+      alt="icon"
+      width="32"
+      height="32"
+      class="icon"
+    />
+    <span class="label">{{ label }}</span>
+  </a>
+</li>

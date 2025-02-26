@@ -1,17 +1,24 @@
 @use '@angular/material' as mat;
 
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 html {
   font-family: 'Poppins', sans-serif;
 
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    background: #fafbfc;
   }
 
   @include mat.theme(
     (
       color: (
-        primary: mat.$violet-palette,
+        primary: mat.$blue-palette,
         tertiary: mat.$orange-palette,
         theme-type: light,
       ),
@@ -19,4 +26,48 @@ html {
       density: 0,
     )
   );
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.mat-mdc-select-panel {
+  background-color: #b5b6ff !important;
+  padding: 8px !important;
+
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+      .mat-mdc-option-multiple
+    ) {
+    background-color: #5d5fef !important;
+
+    .mdc-list-item__primary-text {
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .mat-mdc-option.mdc-list-item {
+    border-radius: 16px;
+    margin: 0 0 8px;
+
+    .mdc-list-item__primary-text {
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
 }

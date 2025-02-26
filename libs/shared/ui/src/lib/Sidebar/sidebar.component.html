@@ -1,0 +1,52 @@
+<div class="side-bar">
+  <div class="logo">
+    <img src="/sidebar/dummy-logo.png" alt="Logo" width="56" height="56" />
+    <h1 class="logo-title">Dabang</h1>
+  </div>
+  <lib-menu
+    [items]="[
+      {
+        icon: '/sidebar/menu-icons/dashboard.png',
+        label: 'Dashboard',
+        link: '/'
+      },
+      {
+        icon: '/sidebar/menu-icons/leaderboard.png',
+        label: 'Leaderboard',
+        link: '/leaderboard'
+      },
+      { icon: '/sidebar/menu-icons/order.png', label: 'order', link: '/order' },
+      {
+        icon: '/sidebar/menu-icons/products.png',
+        label: 'Products',
+        link: '/products'
+      },
+      {
+        icon: '/sidebar/menu-icons/sales-report.png',
+        label: 'Sales Report',
+        link: '/sales-report'
+      },
+      {
+        icon: '/sidebar/menu-icons/messages.png',
+        label: 'Messages',
+        link: '/messages'
+      },
+      {
+        icon: '/sidebar/menu-icons/settings.png',
+        label: 'Settings',
+        link: '/settings'
+      },
+      {
+        icon: '/sidebar/menu-icons/sign-out.png',
+        label: 'Sign Out',
+        link: '/sign-out'
+      }
+    ]"
+  ></lib-menu>
+  <div class="dabang-pro">
+    <img src="/sidebar/dummy-pro-logo.png" alt="" width="48" height="48" />
+    <h3 class="dabang-pro-title">Dabang Pro</h3>
+    <p class="dabang-pro-description">Get access to all features on tetumbas</p>
+    <button class="btn btn-primary">Upgrade</button>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+.header {
+  border: none;
+  background: #fff;
+  margin: 0 0 32px;
+  padding: 30px 44px 30px 40px;
+
+  .header-container {
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+
+      .header-left {
+        .route-title {
+          font-weight: 600;
+          font-size: 36px;
+          line-height: 140%;
+          color: #151d48;
+          margin: 0;
+        }
+      }
+
+      .header-right {
+        width: 100%;
+        max-width: 1084px;
+        gap: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .search-bar {
+          flex: 1;
+          max-width: 513px;
+          background: #f9fafb;
+          border-radius: 16px;
+          height: 60px;
+
+          .mat-mdc-form-field {
+            width: 100%;
+            margin: 0;
+
+            .mat-label-search {
+              gap: 8px;
+            }
+
+            .mat-mdc-form-field-infix {
+              display: flex;
+            }
+
+            .mat-mdc-input-element {
+              font-size: 18px;
+              color: #737791;
+            }
+
+            .mat-mdc-notch-piece {
+              border: none;
+
+              .mdc-floating-label {
+                mat-label {
+                  font-size: 18px;
+                  color: #737791;
+                  line-height: 33px;
+                }
+              }
+            }
+          }
+
+          .mat-mdc-form-field-subscript-wrapper {
+            display: none !important;
+          }
+        }
+
+        .select-box-language {
+          width: 100%;
+          max-width: 189px;
+          height: 60px;
+
+          .ng-star-inserted {
+            font-size: 18px;
+            color: #374557;
+            font-weight: 600;
+          }
+
+          .mat-mdc-notch-piece {
+            border: none;
+            border-radius: 0;
+          }
+
+          .mdc-text-field--outlined:not(
+              .mdc-text-field--disabled
+            ).mdc-text-field--focused
+            .mat-mdc-notch-piece {
+            border-bottom: 2px solid #5d5fef;
+          }
+
+          .mat-mdc-select-arrow-wrapper {
+            width: 24px;
+            height: 24px;
+            .mat-mdc-select-arrow {
+              width: 24px;
+              height: 24px;
+              &::before {
+                content: '';
+                display: block;
+                width: 24px;
+                height: 24px;
+                background: url('/header/arrow-icon.svg') no-repeat center
+                  center;
+              }
+
+              svg {
+                display: none;
+              }
+            }
+          }
+
+          .mat-mdc-form-field {
+            width: 100%;
+            max-width: 189px;
+
+            .mat-mdc-form-field-subscript-wrapper {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
