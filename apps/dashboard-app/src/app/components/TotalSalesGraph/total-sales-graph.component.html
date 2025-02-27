@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-between">
+  <ng-container *ngFor="let item of items; trackBy: trackByFn">
+    <app-total-sales-graph-card
+      [icon]="item.icon"
+      [value]="item.value"
+      [title]="item.title"
+      [text]="item.text"
+      [backgroundColor]="item.backgroundColor"
+      [classPersonalized]="item.classPersonalized"
+    ></app-total-sales-graph-card>
+  </ng-container>
+</div>

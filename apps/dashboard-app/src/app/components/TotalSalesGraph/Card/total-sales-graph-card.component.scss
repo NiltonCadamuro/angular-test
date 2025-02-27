@@ -1,0 +1,40 @@
+.template-card {
+  width: 180px;
+  height: 184px;
+  box-shadow: none;
+  padding: 20px;
+
+  .mat-mdc-card-header {
+    padding: 0;
+
+    .mat-mdc-card-title-group {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 16px;
+
+      .mat-mdc-card-subtitle {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 600;
+        color: #151d48;
+      }
+
+      .mat-mdc-card-title {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+        color: #425166;
+        margin: 8px 0 0;
+      }
+    }
+  }
+
+  .mat-mdc-card-content {
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4079ed;
+    font-weight: 500;
+    margin: 8px 0 0;
+  }
+}

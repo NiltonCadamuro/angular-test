@@ -1,0 +1,14 @@
+<div class="dashboard-container">
+  <div class="dashboard-content d-flex justify-content-between">
+    <lib-graphcard
+      title="Today’s Sales"
+      subTitle="Sales Summery"
+      [hasExportBtn]="true"
+      width="877px"
+      paddingHeader="23px 32px 43px"
+      paddingCard="0 32px 32px"
+    >
+      <app-total-sales-graph [items]="items"></app-total-sales-graph>
+    </lib-graphcard>
+  </div>
+</div>

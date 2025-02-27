@@ -1,0 +1,24 @@
+<div class="graph-card-container" [style.width]="width">
+  <div class="graph-card-content">
+    <div
+      class="graph-card-header d-flex align-items-center justify-content-between"
+      [style.padding]="paddingHeader"
+    >
+      <div class="graph-card-title-container">
+        <h3 class="graph-card-title">{{ title }}</h3>
+        @if(subTitle) {
+        <p class="graph-card-subtitle">{{ subTitle }}</p>
+        }
+      </div>
+      @if(hasExportBtn) {
+      <button mat-button class="export-btn" (click)="exportBtnFunction()">
+        <img src="/export-icon.png" alt="export icon" width="16" height="16" />
+        Export
+      </button>
+      }
+    </div>
+    <div class="graph-card-body" [style.padding]="paddingCard">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
