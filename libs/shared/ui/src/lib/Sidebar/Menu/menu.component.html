@@ -5,7 +5,7 @@
       [icon]="item.icon"
       [label]="item.label"
       [link]="item.link"
-      [isActive]="item.link === currentRoute()"
+      [isActive]="item.link === routeService.currentRoute()"
     ></lib-menuitem>
     }
   </ul>

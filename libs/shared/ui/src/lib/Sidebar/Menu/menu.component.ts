@@ -1,7 +1,6 @@
-import { Component, Input, signal, OnInit } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { MenuItemComponent } from './MenuItem/menuitem.component';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { RouteService } from '../../../services/RouteService/routeService.service';
 
 @Component({
   selector: 'lib-menu',
@@ -9,7 +8,7 @@ import { filter } from 'rxjs';
   styleUrls: ['./menu.component.scss'],
   imports: [MenuItemComponent],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
   currentRoute = signal('');
   @Input() items: {
     icon: string;
@@ -17,20 +16,5 @@ export class MenuComponent implements OnInit {
     link: string;
   }[] = [];
 
-  getCurrentRoute() {
-    if (typeof window === 'undefined') return '';
-    return window.location.pathname;
-  }
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.currentRoute.set(this.getCurrentRoute());
-
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.currentRoute.set(event.url);
-      });
-  }
+  constructor(public routeService: RouteService) {}
 }

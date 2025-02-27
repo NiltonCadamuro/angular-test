@@ -2,7 +2,16 @@
   <div class="header-container">
     <div class="header-content">
       <div class="header-left">
-        <h2 class="route-title">Dashboard</h2>
+        <ng-container
+          *ngIf="routeService.currentRoute() === '/'; else routeTitleDynamic"
+        >
+          <h2 class="route-title">Dashboard</h2>
+        </ng-container>
+        <ng-template #routeTitleDynamic>
+          <h2 class="route-title">
+            {{ routeService.currentRoute() | routeTitle | titlecase }}
+          </h2>
+        </ng-template>
       </div>
 
       <div class="header-right">
