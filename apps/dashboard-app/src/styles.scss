@@ -40,6 +40,10 @@ html {
   align-items: center;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .mat-mdc-select-panel {
   background-color: #b5b6ff !important;
   padding: 8px !important;
@@ -61,6 +65,22 @@ html {
   .mat-mdc-option.mdc-list-item {
     border-radius: 16px;
     margin: 0 0 8px;
+
+    &.none-label {
+      display: none !important;
+    }
+
+    &.logout-label {
+      background-color: #ff5d5d !important;
+
+      .mdc-list-item__primary-text {
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
 
     .mdc-list-item__primary-text {
       color: #fff;

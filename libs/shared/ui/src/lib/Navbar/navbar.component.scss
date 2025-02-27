@@ -124,6 +124,95 @@
             }
           }
         }
+
+        .profile-section-container {
+          gap: 24px;
+
+          .badge-button-notification {
+            .mat-badge {
+              padding: 12px;
+              background: #fffaf1;
+              border-radius: 8px;
+              width: 48px;
+              height: 48px;
+              min-width: 48px;
+              outline: none;
+              box-shadow: none;
+
+              .mat-badge-content {
+                top: 6px;
+                right: 6px;
+                margin: 0;
+                left: unset;
+                padding: 0;
+                font-size: 0;
+                width: 6.5px;
+                height: 6.5px;
+                min-width: unset;
+                min-height: unset;
+                background-color: #eb5757;
+              }
+            }
+          }
+
+          .mat-mdc-form-field {
+            max-width: 204px;
+
+            .mat-mdc-text-field-wrapper {
+              padding: 0;
+
+              .mat-mdc-notch-piece {
+                border: none;
+              }
+
+              .mat-mdc-form-field-infix {
+                padding: 0;
+
+                .mat-mdc-select-value-text {
+                  display: flex;
+                  width: 100%;
+
+                  .ng-star-inserted {
+                    display: flex;
+                    width: 100%;
+
+                    .profile-section {
+                      width: 100%;
+
+                      .profile-info {
+                        gap: 4px;
+
+                        .profile-name {
+                          font-size: 16px;
+                          color: #151d48;
+                          font-weight: 500;
+                          line-height: 24px;
+                          margin: 0;
+                        }
+
+                        .profile-role {
+                          font-size: 14px;
+                          color: #737791;
+                          font-weight: 400;
+                          line-height: 20px;
+                          margin: 0;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .mat-mdc-select-arrow-wrapper {
+                  display: none;
+                }
+              }
+            }
+
+            .mat-mdc-form-field-subscript-wrapper {
+              display: none !important;
+            }
+          }
+        }
       }
     }
   }

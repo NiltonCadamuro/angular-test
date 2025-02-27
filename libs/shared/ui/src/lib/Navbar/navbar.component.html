@@ -61,7 +61,7 @@
           </mat-form-field>
         </div>
 
-        <ul class="profile-section">
+        <div class="profile-section-container d-flex align-items-center">
           <div class="badge-button-notification">
             <button
               mat-raised-button
@@ -70,67 +70,64 @@
               (click)="toggleBadgeVisibility()"
               class="btn btn-default"
             >
-              Hide
+              <div class="notification-icon">
+                <img
+                  src="/header/notification-icon.png"
+                  alt="notification"
+                  width="24"
+                  height="24"
+                />
+              </div>
             </button>
           </div>
-          <li class="dropdown">
-            <a
-              href="#"
-              class="dropdown-toggle"
-              data-toggle="dropdown"
-              role="button"
-            >
-              <div class="profile-section" style="display: inline-block">
+          <mat-form-field appearance="outline" class="profile-select-container">
+            <mat-select ngModel="none" class="profile-select">
+              <mat-select-trigger>
                 <div
-                  class="profile-image"
-                  style="display: inline-block; vertical-align: middle"
+                  class="profile-section d-flex align-items-center justify-content-between"
                 >
-                  <img
-                    src="path/to/profile.jpg"
-                    alt="Profile"
-                    width="60"
-                    height="60"
-                    class="img-circle"
-                  />
+                  <div class="d-flex align-items-center">
+                    <div class="profile-image">
+                      <img
+                        src="/header/profile-placeholder.png"
+                        alt="Profile"
+                        width="60"
+                        height="60"
+                        class="img-profile"
+                      />
+                    </div>
+                    <div
+                      class="profile-info d-flex flex-column"
+                      style="margin-left: 20px"
+                    >
+                      <span class="profile-name">Musfiq</span>
+                      <span class="profile-role">Admin</span>
+                    </div>
+                  </div>
+                  <div
+                    class="profile-action"
+                    style="
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-left: 5px;
+                    "
+                  >
+                    <img
+                      src="/header/arrow-profile.png"
+                      alt="arrow"
+                      width="16"
+                      height="16"
+                    />
+                  </div>
                 </div>
-                <div
-                  class="profile-info"
-                  style="
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-left: 10px;
-                  "
-                >
-                  <span class="profile-name">Musfiq</span>
-                  <br />
-                  <span class="profile-role">Admin</span>
-                </div>
-                <div
-                  class="profile-action"
-                  style="
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-left: 5px;
-                  "
-                >
-                  <img
-                    src="path/to/arrow.png"
-                    alt="arrow"
-                    width="16"
-                    height="16"
-                  />
-                </div>
-              </div>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Settings</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
+              </mat-select-trigger>
+              <mat-option value="none" class="none-label"></mat-option>
+              <mat-option value="en-us">Profile</mat-option>
+              <mat-option value="pt-br">Settings</mat-option>
+              <mat-option value="pt-br" class="logout-label">Logout</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>
