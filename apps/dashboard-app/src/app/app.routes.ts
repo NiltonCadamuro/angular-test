@@ -1,11 +1,12 @@
 import { Route } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { DashboardComponent } from './Dashboard/dashboard.component';
 
 export const appRoutes: Route[] = [
   {
     title: 'Dashboard',
     path: '',
-    component: NxWelcomeComponent,
+    component: DashboardComponent,
   },
   {
     title: 'Leaderboard',
