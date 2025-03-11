@@ -1,0 +1,61 @@
+.customer-satisfaction-legend {
+  gap: 14px;
+  padding: 16px 0 0;
+  margin: 25px 0 0;
+  border-top: 1px solid #edf2f6;
+
+  .legend-item {
+    gap: 8px;
+
+    &:first-child {
+      .legend-item-color-text {
+        padding: 0 14px 0 0;
+        border-right: 1px solid #bdc9d3;
+      }
+    }
+
+    .legend-item-color-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .legend-item-color-line {
+        width: 19px;
+        height: 3px;
+        border-radius: 3px;
+        position: relative;
+
+        .legend-item-color-circle {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          position: absolute;
+          top: -3px;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+
+      .legend-item-color-text {
+        .legend-item-text {
+          font-size: 16px;
+          font-weight: 400;
+          color: #96a5b8;
+          line-height: 30px;
+        }
+      }
+    }
+
+    .legend-item-value-container {
+      margin: 0 0 0 27px;
+
+      .legend-item-value {
+        font-size: 14px;
+        font-weight: 500;
+        color: #222b45;
+        line-height: 20px;
+      }
+    }
+  }
+}

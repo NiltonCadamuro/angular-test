@@ -21,6 +21,7 @@ export class TotalRevenueComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+    maintainAspectRatio: false,
     scales: {
       x: {
         grid: {

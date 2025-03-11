@@ -1,0 +1,62 @@
+<div *ngIf="isBrowser" class="customer-satisfaction-container">
+  <div style="height: 167px">
+    <canvas
+      baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [type]="lineChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"
+    ></canvas>
+  </div>
+  <div
+    class="customer-satisfaction-legend d-flex justify-content-center aling-items-center"
+  >
+    <div class="legend-item">
+      <div
+        class="legend-item-color-container d-flex justify-content-center align-items-center"
+      >
+        <div class="legend-item-color-line" style="background-color: #007dd6">
+          <div
+            class="legend-item-color-circle"
+            style="background-color: #0095ff"
+          ></div>
+        </div>
+        <div class="legend-item-color-text">
+          <span class="legend-item-text">Last Month</span>
+        </div>
+      </div>
+
+      <div class="legend-item-value-container">
+        <span class="legend-item-value">{{
+          higherValueLastMonth | currency : 'USD' : 'symbol' : '1.0-0'
+        }}</span>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div
+        class="legend-item-color-container d-flex justify-content-center align-items-center"
+      >
+        <div class="legend-item-color-line" style="background-color: #05c283">
+          <div
+            class="legend-item-color-circle"
+            style="background-color: #07e098"
+          ></div>
+        </div>
+        <div class="legend-item-color-text">
+          <span class="legend-item-text">This Month</span>
+        </div>
+      </div>
+
+      <div class="legend-item-value-container">
+        <span class="legend-item-value">{{
+          higherValueThisMonth | currency : 'USD' : 'symbol' : '1.0-0'
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isBrowser">
+  <p>Loading...</p>
+</div>

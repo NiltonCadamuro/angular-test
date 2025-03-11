@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { TotalSalesGraphComponent } from '../TotalSalesGraph/total-sales-graph.component';
 import { VisitorInsightsComponent } from '../VisitorInsights/visitor-insights.component';
 import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
+import { CustomerSatisfactionComponent } from '../CustomerSatisfaction/customer-satisfaction.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
     TotalSalesGraphComponent,
     VisitorInsightsComponent,
     TotalRevenueComponent,
+    CustomerSatisfactionComponent,
   ],
 })
 export class DashboardComponent {

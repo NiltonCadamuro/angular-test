@@ -1,13 +1,15 @@
 <div *ngIf="isBrowser" class="total-revenue-container">
-  <canvas
-    baseChart
-    [data]="barChartData"
-    [options]="barChartOptions"
-    [type]="barChartType"
-    (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)"
-  >
-  </canvas>
+  <div style="height: 200px">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"
+    >
+    </canvas>
+  </div>
   <div class="labels-container d-flex justify-content-center">
     <div class="label d-flex align-items-center">
       <div style="background-color: #0095ff" class="label-color"></div>
