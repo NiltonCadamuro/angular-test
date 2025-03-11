@@ -1,0 +1,71 @@
+<div *ngIf="isBrowser" class="target-reality-container">
+  <div style="height: 157px">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"
+    >
+    </canvas>
+  </div>
+
+  <div class="labels-container">
+    <div class="label d-flex align-items-center justify-content-between">
+      <div
+        class="label-color-container d-flex justify-content-center align-items-center"
+      >
+        <div
+          style="background-color: #e2fff3"
+          class="label-color d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="/graph-images/target-vs-reality/reality-sales-icon.png"
+            alt="reality-sales-icon"
+            class="label-icon"
+          />
+        </div>
+        <div class="label-text-container d-flex flex-column align-items-start">
+          <span class="label-title">Reality Sales</span>
+          <span class="label-text">Global</span>
+        </div>
+      </div>
+      <div class="label-value-container">
+        <span class="label-value" style="color: #27ae60">{{
+          realitySalesValue
+        }}</span>
+      </div>
+    </div>
+
+    <div class="label d-flex align-items-center justify-content-between">
+      <div
+        class="label-color-container d-flex justify-content-center align-items-center"
+      >
+        <div
+          style="background-color: #fff4de"
+          class="label-color d-flex justify-content-center align-items-center"
+        >
+          <img
+            src="/graph-images/target-vs-reality/target-sales-icon.png"
+            alt="target-sales-icon"
+            class="label-icon"
+          />
+        </div>
+        <div class="label-text-container d-flex flex-column align-items-start">
+          <span class="label-title">Target Sales</span>
+          <span class="label-text">Commercial</span>
+        </div>
+      </div>
+      <div class="label-value-container">
+        <span class="label-value" style="color: #ffa412">{{
+          targetSalesValue
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isBrowser">
+  <p>Loading...</p>
+</div>

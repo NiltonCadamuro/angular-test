@@ -1,0 +1,52 @@
+.target-reality-container {
+  .labels-container {
+    margin: 18px 0 0;
+
+    .label {
+      width: 100%;
+      max-width: 235px;
+      padding: 0;
+      margin: 0 0 15px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      .label-color-container {
+        gap: 10px;
+
+        .label-color {
+          width: 36px;
+          height: 36px;
+          border-radius: 6px;
+        }
+
+        .label-text-container {
+          gap: 2px;
+
+          .label-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #151d48;
+            line-height: 16px;
+          }
+
+          .label-text {
+            font-size: 10px;
+            font-weight: 400;
+            color: #737791;
+            line-height: 16px;
+          }
+        }
+      }
+
+      .label-value-container {
+        .label-value {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

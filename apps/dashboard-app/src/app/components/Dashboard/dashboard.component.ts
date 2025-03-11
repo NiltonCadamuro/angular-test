@@ -4,6 +4,7 @@ import { TotalSalesGraphComponent } from '../TotalSalesGraph/total-sales-graph.c
 import { VisitorInsightsComponent } from '../VisitorInsights/visitor-insights.component';
 import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
 import { CustomerSatisfactionComponent } from '../CustomerSatisfaction/customer-satisfaction.component';
+import { TargetRealityComponent } from '../TargetReality/target-reality.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ import { CustomerSatisfactionComponent } from '../CustomerSatisfaction/customer-
     VisitorInsightsComponent,
     TotalRevenueComponent,
     CustomerSatisfactionComponent,
+    TargetRealityComponent,
   ],
 })
 export class DashboardComponent {

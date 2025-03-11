@@ -4,9 +4,11 @@
   .lib-sidebar {
     width: 100%;
     max-width: 345px;
-    min-height: 100vh;
     flex-shrink: 0;
     background: #ffffff;
+    position: sticky;
+    height: fit-content;
+    top: 0;
   }
 
   .page-content {
