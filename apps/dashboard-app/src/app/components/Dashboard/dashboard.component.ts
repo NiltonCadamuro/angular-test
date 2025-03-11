@@ -1,12 +1,19 @@
 import { GraphcardComponent } from '@angular-project/ui';
 import { Component } from '@angular/core';
 import { TotalSalesGraphComponent } from '../TotalSalesGraph/total-sales-graph.component';
+import { VisitorInsightsComponent } from '../VisitorInsights/visitor-insights.component';
+import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [GraphcardComponent, TotalSalesGraphComponent],
+  imports: [
+    GraphcardComponent,
+    TotalSalesGraphComponent,
+    VisitorInsightsComponent,
+    TotalRevenueComponent,
+  ],
 })
 export class DashboardComponent {
   items = [

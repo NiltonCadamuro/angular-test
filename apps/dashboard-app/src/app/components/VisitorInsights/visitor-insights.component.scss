@@ -1,0 +1,24 @@
+.visitor-insights-container {
+  .labels-container {
+    gap: 16px;
+    margin-top: 40px;
+
+    .label {
+      gap: 4px;
+      padding: 0;
+
+      .label-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+
+      .label-text {
+        font-family: 'Epilogue', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        color: #464e5f;
+      }
+    }
+  }
+}

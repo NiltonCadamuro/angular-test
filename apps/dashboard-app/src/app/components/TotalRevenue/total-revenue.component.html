@@ -1,0 +1,25 @@
+<div *ngIf="isBrowser" class="total-revenue-container">
+  <canvas
+    baseChart
+    [data]="barChartData"
+    [options]="barChartOptions"
+    [type]="barChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"
+  >
+  </canvas>
+  <div class="labels-container d-flex justify-content-center">
+    <div class="label d-flex align-items-center">
+      <div style="background-color: #0095ff" class="label-color"></div>
+      <span class="label-text">Loyal Customers</span>
+    </div>
+    <div class="label d-flex align-items-center">
+      <div style="background-color: #00e096" class="label-color"></div>
+      <span class="label-text">New Customers</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isBrowser">
+  <p>Loading...</p>
+</div>

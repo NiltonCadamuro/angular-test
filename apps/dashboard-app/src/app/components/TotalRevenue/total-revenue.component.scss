@@ -1,0 +1,25 @@
+.total-revenue-container {
+  .labels-container {
+    gap: 40px;
+    margin-top: 23px;
+
+    .label {
+      gap: 6px;
+      padding: 0;
+
+      .label-color {
+        width: 11px;
+        height: 11px;
+        border-radius: 9999px;
+      }
+
+      .label-text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 400;
+        color: #222b45;
+      }
+    }
+  }
+}
