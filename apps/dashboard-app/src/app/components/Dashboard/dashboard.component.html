@@ -1,5 +1,5 @@
 <div class="dashboard-container">
-  <div class="dashboard-content d-flex justify-content-between">
+  <div class="dashboard-content d-flex justify-content-start">
     <lib-graphcard
       title="Today’s Sales"
       subTitle="Sales Summery"
@@ -63,6 +63,15 @@
       paddingCard="0 25px 25px 15px"
     >
       <app-sales-map></app-sales-map>
+    </lib-graphcard>
+
+    <lib-graphcard
+      title="Volume vs Service Level"
+      width="371px"
+      paddingHeader="25px 26px 22px"
+      paddingCard="0 0 15px"
+    >
+      <app-volume-service-level></app-volume-service-level>
     </lib-graphcard>
   </div>
 </div>

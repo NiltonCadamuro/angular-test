@@ -7,6 +7,7 @@ import { CustomerSatisfactionComponent } from '../CustomerSatisfaction/customer-
 import { TargetRealityComponent } from '../TargetReality/target-reality.component';
 import { TopProductsComponent } from '../TopProducts/top-products.component';
 import { SalesMapComponent } from '../SalesMap/sales-map.component';
+import { VolumeServiceLevelComponent } from '../VolumeServiceLevel/volume-service-level.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ import { SalesMapComponent } from '../SalesMap/sales-map.component';
     TargetRealityComponent,
     TopProductsComponent,
     SalesMapComponent,
+    VolumeServiceLevelComponent,
   ],
 })
 export class DashboardComponent {

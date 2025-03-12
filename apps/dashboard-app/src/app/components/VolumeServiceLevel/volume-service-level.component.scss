@@ -1,0 +1,47 @@
+.volume-service-level-legend {
+  gap: 20px;
+  padding: 16px 0 0;
+  margin: 20px 0 0;
+  border-top: 1px solid #edf2f6;
+
+  .legend-item {
+    &:first-child {
+      .legend-item-color-text {
+        padding: 0 20px 0 0;
+        border-right: 1px solid #bdc9d3;
+      }
+    }
+
+    .legend-item-color-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .legend-item-color-circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .legend-item-color-text {
+        .legend-item-text {
+          font-size: 16px;
+          font-weight: 400;
+          color: #96a5b8;
+          line-height: 30px;
+        }
+      }
+    }
+
+    .legend-item-value-container {
+      margin: 0 0 0 20px;
+
+      .legend-item-value {
+        font-size: 14px;
+        font-weight: 500;
+        color: #222b45;
+        line-height: 20px;
+      }
+    }
+  }
+}

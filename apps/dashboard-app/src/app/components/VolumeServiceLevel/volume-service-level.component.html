@@ -1,0 +1,57 @@
+<div *ngIf="isBrowser" class="total-revenue-container">
+  <div style="height: 168px; max-width: 320px; margin: 0 auto">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+    >
+    </canvas>
+  </div>
+  <div
+    class="volume-service-level-legend d-flex justify-content-center aling-items-center"
+  >
+    <div class="legend-item">
+      <div
+        class="legend-item-color-container d-flex justify-content-center align-items-center"
+      >
+        <div
+          class="legend-item-color-circle"
+          style="background-color: #0095ff"
+        ></div>
+        <div class="legend-item-color-text">
+          <span class="legend-item-text">Volume</span>
+        </div>
+      </div>
+
+      <div class="legend-item-value-container">
+        <span class="legend-item-value">{{
+          volumeValue | number : '1.0-0'
+        }}</span>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div
+        class="legend-item-color-container d-flex justify-content-center align-items-center"
+      >
+        <div
+          class="legend-item-color-circle"
+          style="background-color: #00e096"
+        ></div>
+        <div class="legend-item-color-text">
+          <span class="legend-item-text">Services</span>
+        </div>
+      </div>
+
+      <div class="legend-item-value-container">
+        <span class="legend-item-value">{{
+          serviceValue | number : '1.0-0'
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isBrowser">
+  <p>Loading...</p>
+</div>
