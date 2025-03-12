@@ -1,0 +1,165 @@
+.header-row-container {
+  width: 100%;
+
+  .header-row {
+    margin-bottom: 11px;
+    width: 100%;
+    padding: 0 36px 0 26px;
+
+    .column-header {
+      color: #96a5b8;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .column-rank {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .column-name {
+      flex: 2;
+      max-width: 192px;
+    }
+
+    .column-popularity {
+      flex: 2;
+      max-width: 180px;
+      margin: 0 10px;
+    }
+
+    .column-sales {
+      width: 50px;
+    }
+  }
+}
+
+.product-row-container {
+  width: 100%;
+  border-top: 1px solid #edf2f6;
+
+  &:last-child {
+    .product-row {
+      padding: 22px 36px 0 26px;
+    }
+  }
+
+  .product-row {
+    padding: 22px 36px 18px 26px;
+
+    .product-rank {
+      width: 20px;
+      margin-right: 10px;
+      color: #444a6d;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .product-name {
+      flex: 2;
+      max-width: 192px;
+      color: #444a6d;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .product-popularity {
+      flex: 2;
+      max-width: 180px;
+      height: 4px;
+      border-radius: 8px;
+      margin: 0 10px;
+    }
+
+    .popularity-progress {
+      height: 4px;
+      border-radius: 8px;
+
+      &.color-blue {
+        .mdc-linear-progress__buffer-bar {
+          background-color: #cde7ff;
+        }
+
+        .mdc-linear-progress__bar-inner {
+          border-color: #0095ff;
+          border-radius: 8px;
+        }
+      }
+
+      &.color-green {
+        .mdc-linear-progress__buffer-bar {
+          background-color: #8cfac7;
+        }
+
+        .mdc-linear-progress__bar-inner {
+          border-color: #00e096;
+          border-radius: 8px;
+        }
+      }
+
+      &.color-purple {
+        .mdc-linear-progress__buffer-bar {
+          background-color: #c5a8ff;
+        }
+
+        .mdc-linear-progress__bar-inner {
+          border-color: #884dff;
+          border-radius: 8px;
+        }
+      }
+
+      &.color-orange {
+        .mdc-linear-progress__buffer-bar {
+          background-color: #ffd5a4;
+        }
+
+        .mdc-linear-progress__bar-inner {
+          border-color: #ff8f0d;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .product-sales {
+      width: 50px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      border-radius: 8px;
+
+      &.color-blue {
+        color: #0095ff;
+        background: #f0f9ff;
+        border: 1px solid #0095ff;
+      }
+
+      &.color-green {
+        color: #00e58f;
+        background: #f0fdf4;
+        border: 1px solid #00e58f;
+      }
+
+      &.color-purple {
+        color: #884dff;
+        background: #fbf1ff;
+        border: 1px solid #884dff;
+      }
+
+      &.color-orange {
+        color: #ff8900;
+        background: #fef6e6;
+        border: 1px solid #ff8900;
+      }
+    }
+  }
+}

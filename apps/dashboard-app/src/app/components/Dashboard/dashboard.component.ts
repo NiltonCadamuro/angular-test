@@ -5,6 +5,8 @@ import { VisitorInsightsComponent } from '../VisitorInsights/visitor-insights.co
 import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
 import { CustomerSatisfactionComponent } from '../CustomerSatisfaction/customer-satisfaction.component';
 import { TargetRealityComponent } from '../TargetReality/target-reality.component';
+import { TopProductsComponent } from '../TopProducts/top-products.component';
+import { SalesMapComponent } from '../SalesMap/sales-map.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +19,8 @@ import { TargetRealityComponent } from '../TargetReality/target-reality.componen
     TotalRevenueComponent,
     CustomerSatisfactionComponent,
     TargetRealityComponent,
+    TopProductsComponent,
+    SalesMapComponent,
   ],
 })
 export class DashboardComponent {

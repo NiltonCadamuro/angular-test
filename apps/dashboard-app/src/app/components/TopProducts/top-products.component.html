@@ -1,0 +1,49 @@
+<div class="header-row-container">
+  <div class="header-row d-flex justify-content-between">
+    <span class="column-header column-rank">#</span>
+    <span class="column-header column-name">Name</span>
+    <span class="column-header column-popularity">Popularity</span>
+    <span class="column-header column-sales">Sales</span>
+  </div>
+</div>
+
+<div
+  class="product-row-container"
+  *ngFor="let product of products; let i = index"
+>
+  <div class="product-row d-flex justify-content-between align-items-center">
+    <div class="product-rank">
+      {{ i + 1 | number : '2.0-0' }}
+    </div>
+
+    <div class="product-name">
+      {{ product.name }}
+    </div>
+
+    <div class="product-popularity">
+      <mat-progress-bar
+        [ngClass]="{
+                'popularity-progress': true,
+                'color-blue': product.color === '#0095FF',
+                'color-green': product.color === '#00E096',
+                'color-purple': product.color === '#884DFF',
+                'color-orange': product.color === '#FF8F0D',
+              }"
+        mode="determinate"
+        [value]="product.popularity"
+      ></mat-progress-bar>
+    </div>
+
+    <div
+      [ngClass]="{
+        'product-sales': true,
+        'color-blue': product.color === '#0095FF',
+        'color-green': product.color === '#00E096',
+        'color-purple': product.color === '#884DFF',
+        'color-orange': product.color === '#FF8F0D',
+      }"
+    >
+      {{ product.sales }}%
+    </div>
+  </div>
+</div>
