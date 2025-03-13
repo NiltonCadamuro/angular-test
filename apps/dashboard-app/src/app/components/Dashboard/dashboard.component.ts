@@ -1,5 +1,5 @@
 import { GraphcardComponent } from '@angular-project/ui';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TotalSalesGraphComponent } from '../TotalSalesGraph/total-sales-graph.component';
 import { VisitorInsightsComponent } from '../VisitorInsights/visitor-insights.component';
 import { TotalRevenueComponent } from '../TotalRevenue/total-revenue.component';
@@ -8,6 +8,8 @@ import { TargetRealityComponent } from '../TargetReality/target-reality.componen
 import { TopProductsComponent } from '../TopProducts/top-products.component';
 import { SalesMapComponent } from '../SalesMap/sales-map.component';
 import { VolumeServiceLevelComponent } from '../VolumeServiceLevel/volume-service-level.component';
+import { NumbersService } from '@angular-project/data-access';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,8 +26,9 @@ import { VolumeServiceLevelComponent } from '../VolumeServiceLevel/volume-servic
     SalesMapComponent,
     VolumeServiceLevelComponent,
   ],
+  providers: [CurrencyPipe],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   items = [
     {
       icon: '/graph-images/todays-sales/total-sales-icon.png',
@@ -60,4 +63,18 @@ export class DashboardComponent {
       classPersonalized: 'new-customers-card',
     },
   ];
+
+  constructor(private numbersService: NumbersService) {}
+
+  ngOnInit() {
+    this.numbersService.getNumbers(4, 1, 10000).subscribe({
+      next: (nums) => {
+        this.items.map((item, index) => {
+          item.value = nums[index].toString();
+          item.text = `+${Math.floor(Math.random() * 10)}% from yesterday`;
+        });
+      },
+      error: (err) => console.error('Err:', err),
+    });
+  }
 }

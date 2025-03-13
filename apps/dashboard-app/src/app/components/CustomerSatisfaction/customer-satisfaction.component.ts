@@ -2,8 +2,9 @@ import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import { PLATFORM_ID } from '@angular/core';
+import { PLATFORM_ID, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-customer-satisfaction',
@@ -11,20 +12,47 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './customer-satisfaction.component.html',
   styleUrl: './customer-satisfaction.component.scss',
 })
-export class CustomerSatisfactionComponent implements AfterViewInit {
+export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
   isBrowser = false;
-  higherValueLastMonth = 3004;
-  higherValueThisMonth = 4504;
+  higherValueLastMonth = 0;
+  higherValueThisMonth = 0;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(
+    private numbersService: NumbersService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    this.numbersService.getNumbers(7, 1000, 10000).subscribe({
+      next: (nums1) => {
+        nums1.map((n) =>
+          n > this.higherValueLastMonth ? (this.higherValueLastMonth = n) : null
+        );
+        this.lineChartData.datasets[0].data = nums1;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(7, 10000, 20000).subscribe({
+      next: (nums2) => {
+        nums2.map((n) =>
+          n > this.higherValueThisMonth ? (this.higherValueThisMonth = n) : null
+        );
+        this.lineChartData.datasets[1].data = nums2;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
   }
 
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
         label: 'Last Month',
-        data: [3004, 2800, 3500, 3200, 3800, 4000, 3500],
+        data: [],
         borderColor: '#007dd6',
         backgroundColor: 'rgba(76, 155, 253, 0.2)',
         pointBackgroundColor: '#0095FF',
@@ -36,7 +64,7 @@ export class CustomerSatisfactionComponent implements AfterViewInit {
       },
       {
         label: 'This Month',
-        data: [4504, 4000, 4200, 4500, 4800, 5000, 5200],
+        data: [],
         borderColor: '#05b278',
         backgroundColor: 'rgb(41, 204, 150, 0.2)',
         pointBackgroundColor: '#07E098',
@@ -125,7 +153,6 @@ export class CustomerSatisfactionComponent implements AfterViewInit {
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-  // events
   public chartClicked({
     event,
     active,

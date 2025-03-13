@@ -2,8 +2,9 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import { PLATFORM_ID } from '@angular/core';
+import { PLATFORM_ID, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-visitor-insights',
@@ -11,11 +12,40 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './visitor-insights.component.html',
   styleUrl: './visitor-insights.component.scss',
 })
-export class VisitorInsightsComponent {
+export class VisitorInsightsComponent implements OnInit {
   isBrowser = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(
+    private numbersService: NumbersService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    this.numbersService.getNumbers(11, 1, 390).subscribe({
+      next: (nums) => {
+        this.lineChartData.datasets[0].data = nums;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(11, 1, 390).subscribe({
+      next: (nums) => {
+        this.lineChartData.datasets[1].data = nums;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(11, 1, 390).subscribe({
+      next: (nums) => {
+        this.lineChartData.datasets[2].data = nums;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
   }
 
   public lineChartData: ChartConfiguration['data'] = {
@@ -152,7 +182,6 @@ export class VisitorInsightsComponent {
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-  // events
   public chartClicked({
     event,
     active,

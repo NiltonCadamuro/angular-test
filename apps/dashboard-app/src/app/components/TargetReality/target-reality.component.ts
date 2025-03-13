@@ -1,8 +1,15 @@
-import { Component, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  Component,
+  Inject,
+  PLATFORM_ID,
+  ViewChild,
+  OnInit,
+} from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-target-reality',
@@ -10,13 +17,40 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './target-reality.component.html',
   styleUrl: './target-reality.component.scss',
 })
-export class TargetRealityComponent {
+export class TargetRealityComponent implements OnInit {
   isBrowser = false;
-  realitySalesValue = 8823;
-  targetSalesValue = 12122;
+  realitySalesValue = 0;
+  targetSalesValue = 0;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(
+    private numbersService: NumbersService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    this.numbersService.getNumbers(7, 6000, 23000).subscribe({
+      next: (nums1) => {
+        nums1.map((n) =>
+          n > this.realitySalesValue ? (this.realitySalesValue = n) : null
+        );
+        this.barChartData.datasets[0].data = nums1;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(7, 6000, 23000).subscribe({
+      next: (nums2) => {
+        nums2.map((n) =>
+          n > this.targetSalesValue ? (this.targetSalesValue = n) : null
+        );
+        this.barChartData.datasets[1].data = nums2;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
   }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
@@ -84,7 +118,6 @@ export class TargetRealityComponent {
     ],
   };
 
-  // events
   public chartClicked({
     event,
     active,

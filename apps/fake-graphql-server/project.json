@@ -1,0 +1,58 @@
+{
+  "name": "fake-graphql-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/fake-graphql-server/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/fake-graphql-server",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/fake-graphql-server/src/main.ts",
+        "tsConfig": "apps/fake-graphql-server/tsconfig.app.json",
+        "assets": ["apps/fake-graphql-server/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "fake-graphql-server:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "fake-graphql-server:build:development"
+        },
+        "production": {
+          "buildTarget": "fake-graphql-server:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

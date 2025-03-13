@@ -2,8 +2,9 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { PLATFORM_ID } from '@angular/core';
+import { PLATFORM_ID, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-total-revenue',
@@ -11,11 +12,32 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './total-revenue.component.html',
   styleUrl: './total-revenue.component.scss',
 })
-export class TotalRevenueComponent {
+export class TotalRevenueComponent implements OnInit {
   isBrowser = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(
+    private numbersService: NumbersService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    this.numbersService.getNumbers(7, 1000, 21000).subscribe({
+      next: (nums1) => {
+        this.barChartData.datasets[0].data = nums1;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(7, 1000, 21000).subscribe({
+      next: (nums2) => {
+        this.barChartData.datasets[1].data = nums2;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
   }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
@@ -100,7 +122,6 @@ export class TotalRevenueComponent {
     ],
   };
 
-  // events
   public chartClicked({
     event,
     active,

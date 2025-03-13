@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-top-products',
@@ -9,7 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   styleUrl: './top-products.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class TopProductsComponent {
+export class TopProductsComponent implements OnInit {
   products = [
     {
       name: 'Home Decor Range',
@@ -36,4 +37,18 @@ export class TopProductsComponent {
       color: '#FF8F0D',
     },
   ];
+
+  constructor(private numbersService: NumbersService) {}
+
+  ngOnInit() {
+    this.numbersService.getNumbers(5, 0, 100).subscribe({
+      next: (nums) => {
+        this.products.map((product, index) => {
+          product.sales = nums[index];
+          product.popularity = Math.floor((nums[index] / 100) * 100);
+        });
+      },
+      error: (err) => console.error('Err:', err),
+    });
+  }
 }

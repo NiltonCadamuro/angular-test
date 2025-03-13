@@ -1,13 +1,35 @@
-<mat-card
-  class="template-card {{ classPersonalized }}"
-  [ngStyle]="{ 'background-color': backgroundColor }"
+<ng-container
+  *ngIf="classPersonalized !== 'total-sales-card'; else totalSalesCard"
 >
-  <mat-card-header>
-    <mat-card-title-group>
-      <img [src]="icon" alt="total sales icon" width="40" height="40" />
-      <mat-card-subtitle>{{ value }}</mat-card-subtitle>
-      <mat-card-title>{{ title }}</mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>{{ text }}</mat-card-content>
-</mat-card>
+  <mat-card
+    class="template-card {{ classPersonalized }}"
+    [ngStyle]="{ 'background-color': backgroundColor }"
+  >
+    <mat-card-header>
+      <mat-card-title-group>
+        <img [src]="icon" alt="total sales icon" width="40" height="40" />
+        <mat-card-subtitle>{{ value }}</mat-card-subtitle>
+        <mat-card-title>{{ title }}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>{{ text }}</mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #totalSalesCard>
+  <mat-card
+    class="template-card {{ classPersonalized }}"
+    [ngStyle]="{ 'background-color': backgroundColor }"
+  >
+    <mat-card-header>
+      <mat-card-title-group>
+        <img [src]="icon" alt="total sales icon" width="40" height="40" />
+        <mat-card-subtitle>{{
+          value | kFormat : 'USD' : 'symbol' : '1.0-0'
+        }}</mat-card-subtitle>
+        <mat-card-title>{{ title }}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>{{ text }}</mat-card-content>
+  </mat-card>
+</ng-template>

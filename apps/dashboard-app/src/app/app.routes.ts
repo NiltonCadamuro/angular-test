@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { NumbersComponent } from './nx-welcome.component';
 import { DashboardComponent } from './components/Dashboard/dashboard.component';
 
 export const appRoutes: Route[] = [
@@ -11,36 +11,36 @@ export const appRoutes: Route[] = [
   {
     title: 'Leaderboard',
     path: 'leaderboard',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'order',
     path: 'order',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'Products',
     path: 'products',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'Sales Report',
     path: 'sales-report',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'Messages',
     path: 'messages',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'Settings',
     path: 'settings',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
   {
     title: 'Sign Out',
     path: 'sign-out',
-    component: NxWelcomeComponent,
+    component: NumbersComponent,
   },
 ];

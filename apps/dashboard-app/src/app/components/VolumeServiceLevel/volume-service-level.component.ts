@@ -1,7 +1,14 @@
-import { Component, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  Component,
+  Inject,
+  PLATFORM_ID,
+  ViewChild,
+  OnInit,
+} from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-volume-service-level',
@@ -9,13 +16,38 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './volume-service-level.component.html',
   styleUrl: './volume-service-level.component.scss',
 })
-export class VolumeServiceLevelComponent {
+export class VolumeServiceLevelComponent implements OnInit {
   isBrowser = false;
-  volumeValue = 1135;
-  serviceValue = 635;
+  volumeValue = 0;
+  serviceValue = 0;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  constructor(
+    private numbersService: NumbersService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit() {
+    this.numbersService.getNumbers(6, 600, 1200).subscribe({
+      next: (nums) => {
+        nums.map((n) =>
+          n > this.serviceValue ? (this.serviceValue = n) : null
+        );
+        this.barChartData.datasets[0].data = nums;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
+
+    this.numbersService.getNumbers(6, 100, 700).subscribe({
+      next: (nums) => {
+        nums.map((n) => (n > this.volumeValue ? (this.volumeValue = n) : null));
+        this.barChartData.datasets[1].data = nums;
+        this.chart?.update();
+      },
+      error: (err) => console.error('Err:', err),
+    });
   }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;

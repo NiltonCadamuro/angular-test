@@ -1,20 +1,28 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { NumbersService } from '@angular-project/data-access';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialStandaloneModule } from '@angular-project/material';
 
 @Component({
-  selector: 'app-nx-welcome',
-  imports: [CommonModule, MaterialStandaloneModule],
+  selector: 'app-numbers',
   template: `
-    <div class="container">
-      <h1 class="text-center">Bootstrap 3 Funcionando!</h1>
-      <button class="btn btn-primary">Clique aqui</button>
-      <h1>Teste Material + Bootstrap</h1>
-      <button mat-raised-button color="primary">Botão Material</button>
-      <button class="btn btn-primary">Botão Bootstrap 3</button>
-    </div>
+    <h3>Números</h3>
+    <ul>
+      <li *ngFor="let n of numbers">{{ n }}</li>
+    </ul>
   `,
-  styles: [],
-  encapsulation: ViewEncapsulation.None,
+  imports: [CommonModule],
 })
-export class NxWelcomeComponent {}
+export class NumbersComponent implements OnInit {
+  numbers: number[] = [];
+
+  constructor(private numbersService: NumbersService) {}
+
+  ngOnInit() {
+    this.numbersService.getNumbers(5, 1000, 20000).subscribe({
+      next: (nums) => {
+        this.numbers = nums;
+      },
+      error: (err) => console.error('Err:', err),
+    });
+  }
+}
