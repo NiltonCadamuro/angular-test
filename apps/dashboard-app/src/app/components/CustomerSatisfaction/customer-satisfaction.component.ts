@@ -1,16 +1,21 @@
-import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  AfterViewInit,
+  OnInit,
+  Inject,
+  ViewChild,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import { PLATFORM_ID, OnInit } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 import { NumbersService } from '@angular-project/data-access';
 
 @Component({
   selector: 'app-customer-satisfaction',
   imports: [CommonModule, BaseChartDirective],
   templateUrl: './customer-satisfaction.component.html',
-  styleUrl: './customer-satisfaction.component.scss',
+  styleUrls: ['./customer-satisfaction.component.scss'],
 })
 export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
   isBrowser = false;
@@ -25,11 +30,13 @@ export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    if (!this.isBrowser) {
+      return;
+    }
+
     this.numbersService.getNumbers(7, 1000, 10000).subscribe({
       next: (nums1) => {
-        nums1.map((n) =>
-          n > this.higherValueLastMonth ? (this.higherValueLastMonth = n) : null
-        );
+        this.higherValueLastMonth = Math.max(...nums1);
         this.lineChartData.datasets[0].data = nums1;
         this.chart?.update();
       },
@@ -38,9 +45,7 @@ export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
 
     this.numbersService.getNumbers(7, 10000, 20000).subscribe({
       next: (nums2) => {
-        nums2.map((n) =>
-          n > this.higherValueThisMonth ? (this.higherValueThisMonth = n) : null
-        );
+        this.higherValueThisMonth = Math.max(...nums2);
         this.lineChartData.datasets[1].data = nums2;
         this.chart?.update();
       },
@@ -66,7 +71,7 @@ export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
         label: 'This Month',
         data: [],
         borderColor: '#05b278',
-        backgroundColor: 'rgb(41, 204, 150, 0.2)',
+        backgroundColor: 'rgba(41, 204, 150, 0.2)',
         pointBackgroundColor: '#07E098',
         pointBorderColor: '#07E098',
         pointBorderWidth: 3,
@@ -99,59 +104,50 @@ export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
     },
     scales: {
       x: {
-        grid: {
-          display: false,
-        },
-        border: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
+        grid: { display: false },
+        border: { display: false },
+        ticks: { display: false },
       },
       y: {
         position: 'left',
-        grid: {
-          display: false,
-        },
-        border: {
-          display: false,
-        },
-        ticks: {
-          display: false,
-        },
+        grid: { display: false },
+        border: { display: false },
+        ticks: { display: false },
       },
     },
-
     plugins: {
-      legend: {
-        display: false,
-      },
+      legend: { display: false },
       crosshair: {
-        line: {
-          color: '#7B91B0',
-          width: 1,
-          dashPattern: [3, 3],
-        },
-        sync: {
-          enabled: false,
-        },
-        zoom: {
-          enabled: false,
-        },
-        snap: {
-          enabled: true,
-        },
+        line: { color: '#7B91B0', width: 1, dashPattern: [3, 3] },
+        sync: { enabled: false },
+        zoom: { enabled: false },
+        snap: { enabled: true },
       },
-      annotation: {
-        annotations: [],
-      },
+      annotation: { annotations: [] },
     },
   };
 
   public lineChartType: ChartType = 'line';
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+
+  ngAfterViewInit(): void {
+    if (this.chart && this.chart.chart && this.isBrowser) {
+      const ctx = this.chart.chart.ctx;
+      const gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+      gradient1.addColorStop(0, '#aae1f9');
+      gradient1.addColorStop(1, '#ffffff');
+
+      const gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+      gradient2.addColorStop(0, '#cdf9ea');
+      gradient2.addColorStop(1, '#ffffff');
+
+      this.lineChartData.datasets[0].backgroundColor = gradient1;
+      this.lineChartData.datasets[1].backgroundColor = gradient2;
+
+      this.chart.update();
+    }
+  }
 
   public chartClicked({
     event,
@@ -171,24 +167,5 @@ export class CustomerSatisfactionComponent implements AfterViewInit, OnInit {
     active?: object[];
   }): void {
     console.log(event, active);
-  }
-
-  ngAfterViewInit(): void {
-    if (this.chart && this.chart.chart && this.isBrowser) {
-      const ctx = this.chart.chart.ctx;
-
-      const gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-      gradient1.addColorStop(0, '#aae1f9');
-      gradient1.addColorStop(1, '#ffffff');
-
-      const gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-      gradient2.addColorStop(0, '#cdf9ea');
-      gradient2.addColorStop(1, '#ffffff');
-
-      this.lineChartData.datasets[0].backgroundColor = gradient1;
-      this.lineChartData.datasets[1].backgroundColor = gradient2;
-
-      this.chart.update();
-    }
   }
 }

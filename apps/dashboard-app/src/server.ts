@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Polyfill para WebSocket no ambiente Node (SSR)
+(global as any).WebSocket = require('ws');
+
+// Importa o zone.js para o SSR
+import 'zone.js/node';
+
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
@@ -15,19 +22,15 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
+ * Endpoints de API REST podem ser definidos aqui, se necessário.
+ * Exemplo:
  * app.get('/api/**', (req, res) => {
- *   // Handle API request
+ *   // Lógica da API
  * });
- * ```
  */
 
 /**
- * Serve static files from /browser
+ * Serve arquivos estáticos da pasta /browser
  */
 app.use(
   express.static(browserDistFolder, {
@@ -38,7 +41,7 @@ app.use(
 );
 
 /**
- * Handle all other requests by rendering the Angular application.
+ * Trata todas as outras requisições renderizando a aplicação Angular.
  */
 app.use('/**', (req, res, next) => {
   angularApp
@@ -50,8 +53,8 @@ app.use('/**', (req, res, next) => {
 });
 
 /**
- * Start the server if this module is the main entry point.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ * Inicia o servidor se este módulo for o entry point principal.
+ * O servidor ouve na porta definida pela variável de ambiente PORT ou, por padrão, 4000.
  */
 if (isMainModule(import.meta.url)) {
   const port = process.env['PORT'] || 4000;
@@ -61,6 +64,6 @@ if (isMainModule(import.meta.url)) {
 }
 
 /**
- * The request handler used by the Angular CLI (dev-server and during build).
+ * O handler de requisição usado pelo Angular CLI (dev-server e durante o build).
  */
 export const reqHandler = createNodeRequestHandler(app);

@@ -32,9 +32,7 @@ export class TargetRealityComponent implements OnInit {
   ngOnInit() {
     this.numbersService.getNumbers(7, 6000, 23000).subscribe({
       next: (nums1) => {
-        nums1.map((n) =>
-          n > this.realitySalesValue ? (this.realitySalesValue = n) : null
-        );
+        this.realitySalesValue = Math.max(...nums1);
         this.barChartData.datasets[0].data = nums1;
         this.chart?.update();
       },
@@ -43,9 +41,7 @@ export class TargetRealityComponent implements OnInit {
 
     this.numbersService.getNumbers(7, 6000, 23000).subscribe({
       next: (nums2) => {
-        nums2.map((n) =>
-          n > this.targetSalesValue ? (this.targetSalesValue = n) : null
-        );
+        this.targetSalesValue = Math.max(...nums2);
         this.barChartData.datasets[1].data = nums2;
         this.chart?.update();
       },

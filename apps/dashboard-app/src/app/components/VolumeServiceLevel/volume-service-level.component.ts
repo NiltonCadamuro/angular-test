@@ -31,9 +31,7 @@ export class VolumeServiceLevelComponent implements OnInit {
   ngOnInit() {
     this.numbersService.getNumbers(6, 600, 1200).subscribe({
       next: (nums) => {
-        nums.map((n) =>
-          n > this.serviceValue ? (this.serviceValue = n) : null
-        );
+        this.serviceValue = Math.max(...nums);
         this.barChartData.datasets[0].data = nums;
         this.chart?.update();
       },
@@ -42,7 +40,7 @@ export class VolumeServiceLevelComponent implements OnInit {
 
     this.numbersService.getNumbers(6, 100, 700).subscribe({
       next: (nums) => {
-        nums.map((n) => (n > this.volumeValue ? (this.volumeValue = n) : null));
+        this.volumeValue = Math.max(...nums);
         this.barChartData.datasets[1].data = nums;
         this.chart?.update();
       },

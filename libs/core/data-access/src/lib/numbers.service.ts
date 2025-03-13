@@ -16,18 +16,13 @@ export class NumbersService {
   constructor(private apollo: Apollo) {}
 
   getNumbers(count: number, min?: number, max?: number): Observable<number[]> {
-    const numbers = this.apollo
+    return this.apollo
       .watchQuery({
         query: GET_NUMBERS,
         variables: { count, min, max },
         fetchPolicy: 'no-cache',
+        pollInterval: 10000, // Atualiza a cada 10 segundos
       })
-      .valueChanges.pipe(
-        map((result: any) => {
-          return result?.data?.numbers ?? [];
-        })
-      );
-
-    return numbers;
+      .valueChanges.pipe(map((result: any) => result?.data?.numbers ?? []));
   }
 }
