@@ -1,82 +1,69 @@
-# AngularProject
+# Angular Dashboard - NX Monorepo
+This project is an Angular Dashboard built using NX to manage the repository structure. It features real-time data updates via WebSockets, refreshing every 10 seconds, and uses a fake GraphQL API as its backend.
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Installation
+### Prerequisites
+Before running the project, ensure you have the following installed:
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+- Node.js version 18.19.1 or higher
+- npm (Node Package Manager)
+- NX CLI (automatically installed via npx)
+If you do not have Node.js installed or are using a different version, consider using nvm to manage versions.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Finish your CI setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/EgBGOixoem)
-
-
-## Run tasks
-
-To run the dev server for your app, use:
-
-```sh
-npx nx serve angular-project
+### Installation Steps
+Clone the repository:
 ```
-
-To create a production bundle:
-
-```sh
-npx nx build angular-project
+git clone <repository-url>
+cd <project-folder>
 ```
-
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project angular-project
+Install dependencies:
 ```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+npm install
 ```
+## Running the Project
+This project requires two terminals to run simultaneously: one for the backend (fake GraphQL API) and one for the frontend (Angular dashboard).
 
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
+### 1. Start the Fake GraphQL API
+In the first terminal, run:
 ```
+npx nx serve apps/fake-graphql-server
+```
+This will start the fake GraphQL server.
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### 2. Start the Dashboard App
+In the second terminal, run:
+```
+npx nx serve apps/dashboard-app
+```
+This will start the Angular Dashboard application. By default, it should be available at:
+```
+http://localhost:4200/
+```
+Real-Time Updates via WebSocket
+This dashboard is designed to update data automatically every 10 seconds using WebSockets. It listens for changes and refreshes the UI in real-time.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Project Structure
+````
+/project-folder
+│── apps/
+│ ├── dashboard-app/ (Angular Dashboard Application)
+│ ├── fake-graphql-server/ (Fake GraphQL Backend)
+│── libs/ (Shared libraries and utilities)
+│ ├── core/ (Conections with backend)
+│ ├── shared/ (Shared Visual components)
+│── nx.json (NX configuration)
+│── package.json (Project dependencies & scripts)
+│── README.md (Project documentation)
+````
+## Technologies Used
+- Angular (Frontend framework)
+- NX (Monorepo management)
+- WebSockets (Real-time data updates)
+- GraphQL (Fake API)
+- Node.js v18.19.1 & npm (Package management)
+## Need Help?
+If you encounter any issues, ensure you are using Node.js v18.19.1 by running:
+```
+node -v
+```
+If you still experience problems, feel free to ask for help.
